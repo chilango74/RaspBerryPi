@@ -13,7 +13,7 @@ if not Gamepad.available():
 print('Gamepad connected')
 
 # Pick the gamepad type
-gamepad = Gamepad.Gamepad()   #Generic unnamed controls
+gamepad = Gamepad.DefenderX7()   #Generic unnamed controls
 #gamepad = Gamepad.PS3()
 #gamepad = Gamepad.PS4()
 

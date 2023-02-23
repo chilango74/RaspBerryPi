@@ -6,7 +6,7 @@ import Gamepad
 import time
 
 # Gamepad settings
-gamepadType = Gamepad.Gamepad
+gamepadType = Gamepad.DefenderX7
 buttonHappy = 'CROSS'
 buttonBeep = 'CIRCLE'
 buttonExit = 'PS'
