@@ -50,13 +50,13 @@ try:
         forward_value = gamepad.axis(y_axes)
         turn_value = gamepad.axis(x_axes)
         
-        print(f'{forward_value=}, {turn_value=}')
+        # print(f'{forward_value=}, {turn_value=}')
         if turn_value < 0.3 and turn_value > -0.3:
-            print('moving forward')
+            # print('moving forward')
             robot.value = forward_value, forward_value
         else:
-            print('turning')
-            robot.value = turn_value, -turn_value
+            # print('turning')
+            robot.value = turn_value/2, -turn_value/2
         
             
         # Sleep for our polling interval
