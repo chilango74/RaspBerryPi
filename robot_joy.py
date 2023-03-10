@@ -22,10 +22,6 @@ if not Gamepad.available():
         time.sleep(1.0)
 print('Gamepad connected')
 
-# Set some initial state
-speed = 0.0
-steering = 0.0
-
 gamepad = Gamepad.DefenderX7()
 # Start the background updating
 gamepad.startBackgroundUpdates()
@@ -53,7 +49,7 @@ try:
         # print(f'{forward_value=}, {turn_value=}')
         if turn_value < 0.3 and turn_value > -0.3:
             # print('moving forward')
-            robot.value = forward_value, forward_value
+            robot.value = forward_value/2, forward_value/2
         else:
             # print('turning')
             robot.value = turn_value/2, -turn_value/2
