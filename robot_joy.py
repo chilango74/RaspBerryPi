@@ -3,6 +3,8 @@ import time
 import gpiozero
 from Gamepad import Gamepad
 
+from distance_sensor_2 import get_distance
+
 cpu = gpiozero.CPUTemperature(min_temp=20, max_temp=80)
 
 # Gamepad settings
@@ -31,8 +33,12 @@ robot = gpiozero.Robot(left=(17, 18), right=(27, 22))
 # Joystick events handled in the background
 try:
     while gamepad.isConnected():
-        if cpu.temperature > 50:
-            print(f'WARNING: Temperature is above 50C')
+        if cpu.temperature > 80:
+            print(f'WARNING: Temperature is {cpu.temperature}')
+            
+        d = get_distance()
+        if d < 15:
+            print(f'WARNING. Unknown object is at {d}cm')
         # Check for the exit button
         if gamepad.beenPressed(buttonExit):
             robot.stop()
@@ -43,7 +49,7 @@ try:
             robot.stop()
             print('STOP')
           
-        forward_value = gamepad.axis(y_axes)
+        forward_value = - gamepad.axis(y_axes)
         turn_value = gamepad.axis(x_axes)
         
         # print(f'{forward_value=}, {turn_value=}')
