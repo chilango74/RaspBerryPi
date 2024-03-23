@@ -4,6 +4,7 @@ import gpiozero
 from Gamepad import Gamepad
 
 from distance_sensor_2 import get_distance
+import text2speech_settings as t2s
 
 cpu = gpiozero.CPUTemperature(min_temp=20, max_temp=80)
 
@@ -39,6 +40,8 @@ try:
         d = get_distance()
         if d < 15:
             print(f'WARNING. Unknown object is at {d}cm')
+            t2s.engine.say(f"WARNING")
+            t2s.engine.runAndWait()
         # Check for the exit button
         if gamepad.beenPressed(buttonExit):
             robot.stop()
